@@ -1,749 +1,567 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aimeê Miranda Ribeiro — CV</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0c0c0f;
-    --surface: #13131a;
-    --border: #1e1e2e;
-    --accent: #c8f547;
-    --accent2: #5c8cff;
-    --text: #e8e8f0;
-    --muted: #6b6b85;
-    --subtle: #1a1a28;
-    --h1-color: #fff;
-    --summary-color: #c8c8de;
-    --job-title-color: #fff;
-    --toggle-bg: #1e1e2e;
-    --toggle-border: #2e2e44;
-    --toggle-icon: '☀️';
-    --transition-theme: background 0.35s ease, color 0.35s ease, border-color 0.35s ease;
-  }
-
-  html.light {
-    --bg: #f5f3ee;
-    --surface: #eceae4;
-    --border: #d8d4c8;
-    --accent: #4a7c00;
-    --accent2: #1a45b0;
-    --text: #1a1a2e;
-    --muted: #7a7a90;
-    --subtle: #e8e4dc;
-    --h1-color: #0e0e1a;
-    --summary-color: #3a3a5c;
-    --job-title-color: #0e0e1a;
-    --toggle-bg: #e0dcd4;
-    --toggle-border: #c8c4b8;
-    --toggle-icon: '🌙';
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    line-height: 1.7;
-    min-height: 100vh;
-    overflow-x: hidden;
-    transition: background 0.35s ease, color 0.35s ease;
-  }
-
-  /* Noise overlay */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: 200px;
-    pointer-events: none;
-    z-index: 1000;
-    opacity: 0.5;
-  }
-
-  .page {
-    max-width: 880px;
-    margin: 0 auto;
-    padding: 60px 40px 80px;
-    position: relative;
-  }
-
-  /* ── HEADER ── */
-  header {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 40px;
-    align-items: end;
-    padding-bottom: 40px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 56px;
-    animation: fadeUp 0.8s ease both;
-  }
-
-  .name-block h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(38px, 6vw, 62px);
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: -1px;
-    color: var(--h1-color);
-    margin-bottom: 8px;
-    transition: color 0.35s ease;
-  }
-
-  .name-block h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  .subtitle {
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .contact-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 6px;
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  .contact-grid a {
-    color: var(--text);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .contact-grid a:hover { color: var(--accent); }
-
-  .contact-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .contact-item::before {
-    content: '—';
-    color: var(--accent);
-    font-size: 10px;
-  }
-
-  /* ── GRID LAYOUT ── */
-  .grid {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 0 48px;
-  }
-
-  /* ── SECTION ── */
-  .section {
-    display: contents;
-  }
-
-  .section-label {
-    padding-top: 4px;
-    text-align: right;
-  }
-
-  .section-label span {
-    font-family: 'Syne', sans-serif;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--accent);
-    display: inline-block;
-    position: sticky;
-    top: 20px;
-  }
-
-  .section-body {
-    padding-bottom: 48px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 48px;
-  }
-
-  /* Remove border from last section-body */
-  .section:last-child .section-body {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
-
-  /* ── SUMMARY ── */
-  .summary {
-    font-size: 13.5px;
-    line-height: 1.8;
-    color: var(--summary-color);
-    font-family: 'DM Mono', monospace;
-    font-weight: 300;
-    transition: color 0.35s ease;
-  }
-
-  /* ── SKILLS ── */
-  .skill-group {
-    margin-bottom: 16px;
-  }
-
-  .skill-group:last-child { margin-bottom: 0; }
-
-  .skill-cat {
-    font-family: 'Syne', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--accent2);
-    margin-bottom: 8px;
-  }
-
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .tag {
-    background: var(--subtle);
-    border: 1px solid var(--border);
-    color: var(--text);
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 2px;
-    font-family: 'DM Mono', monospace;
-    letter-spacing: 0.3px;
-    transition: all 0.2s;
-  }
-
-  .tag:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: rgba(200, 245, 71, 0.05);
-  }
-
-  /* ── EXPERIENCE ── */
-  .job {
-    margin-bottom: 36px;
-    padding-left: 20px;
-    border-left: 2px solid var(--border);
-    position: relative;
-    transition: border-color 0.3s;
-  }
-
-  .job:hover { border-left-color: var(--accent); }
-
-  .job::before {
-    content: '';
-    position: absolute;
-    left: -5px;
-    top: 8px;
-    width: 8px;
-    height: 8px;
-    background: var(--accent);
-    border-radius: 50%;
-    transition: transform 0.3s;
-  }
-
-  .job:hover::before { transform: scale(1.4); }
-
-  .job:last-child { margin-bottom: 0; }
-
-  .job-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 4px;
-  }
-
-  .job-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--job-title-color);
-    transition: color 0.35s ease;
-  }
-
-  .job-period {
-    font-size: 11px;
-    color: var(--muted);
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .job-company {
-    font-size: 12px;
-    color: var(--accent2);
-    margin-bottom: 10px;
-    font-weight: 500;
-  }
-
-  .job-bullets {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .job-bullets li {
-    font-size: 12.5px;
-    color: #a8a8c0;
-    padding-left: 16px;
-    position: relative;
-    line-height: 1.6;
-  }
-
-  .job-bullets li::before {
-    content: '›';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-size: 14px;
-  }
-
-  /* ── PROJECTS ── */
-  .project {
-    background: var(--subtle);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 20px 24px;
-    margin-bottom: 16px;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .project::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px; height: 100%;
-    background: var(--accent);
-    transform: scaleY(0);
-    transition: transform 0.3s;
-    transform-origin: top;
-  }
-
-  .project:hover { border-color: rgba(200, 245, 71, 0.25); }
-  .project:hover::before { transform: scaleY(1); }
-
-  .project:last-child { margin-bottom: 0; }
-
-  .project-desc {
-    font-size: 12px;
-    color: #8888a8;
-    line-height: 1.7;
-  }
-
-  /* ── EDUCATION ── */
-  .edu {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .edu:last-child {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border-bottom: none;
-  }
-
-  .edu-left {}
-
-  .edu-institution {
-    font-size: 12px;
-    color: var(--accent2);
-  }
-
-  .edu-note {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 4px;
-  }
-
-  .edu-period {
-    font-size: 11px;
-    color: var(--muted);
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  /* ── THEME TOGGLE ── */
-  .theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 24px;
-    z-index: 999;
-    background: var(--toggle-bg);
-    border: 1px solid var(--toggle-border);
-    border-radius: 24px;
-    padding: 6px 14px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-family: 'Syne', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--muted);
-    transition: all 0.3s ease;
-    user-select: none;
-    backdrop-filter: blur(8px);
-  }
-
-  .theme-toggle:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  .theme-toggle .icon {
-    font-size: 13px;
-    line-height: 1;
-    transition: transform 0.4s ease;
-  }
-
-  .theme-toggle:hover .icon {
-    transform: rotate(20deg);
-  }
-
-  /* ── EDU DEGREE color fix ── */
-  .edu-degree {
-    font-family: 'Syne', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--job-title-color);
-    margin-bottom: 3px;
-    transition: color 0.35s ease;
-  }
-
-  /* ── PROJECT TITLE color fix ── */
-  .project-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--job-title-color);
-    margin-bottom: 8px;
-    letter-spacing: 0.5px;
-    transition: color 0.35s ease;
-  }
-
-  @media (max-width: 640px) {
-    .theme-toggle { top: 12px; right: 12px; padding: 5px 10px; }
-  }
-
-  @media print {
-    .theme-toggle { display: none; }
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .section-body {
-    animation: fadeUp 0.7s ease both;
-  }
-
-  .section:nth-child(1) .section-body { animation-delay: 0.1s; }
-  .section:nth-child(2) .section-body { animation-delay: 0.2s; }
-  .section:nth-child(3) .section-body { animation-delay: 0.3s; }
-  .section:nth-child(4) .section-body { animation-delay: 0.4s; }
-  .section:nth-child(5) .section-body { animation-delay: 0.5s; }
-  .section:nth-child(6) .section-body { animation-delay: 0.6s; }
-
-  /* Badge de destaque */
-  .badge {
-    display: inline-block;
-    background: rgba(200, 245, 71, 0.12);
-    border: 1px solid rgba(200, 245, 71, 0.3);
-    color: var(--accent);
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding: 2px 8px;
-    border-radius: 2px;
-    font-family: 'Syne', sans-serif;
-    font-weight: 600;
-    margin-left: 8px;
-    vertical-align: middle;
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 640px) {
-    .page { padding: 32px 20px 60px; }
-    header { grid-template-columns: 1fr; gap: 24px; }
-    .contact-grid { align-items: flex-start; }
-    .contact-item::before { display: none; }
-    .grid { grid-template-columns: 1fr; }
-    .section-label { text-align: left; padding-bottom: 12px; }
-    .section-label span { position: static; }
-    .section-body { border-bottom: 1px solid var(--border); margin-bottom: 32px; padding-bottom: 32px; }
-  }
-
-  @media print {
-    body { background: white; color: #111; }
-    body::before { display: none; }
-    :root {
-      --bg: white;
-      --surface: #f5f5f5;
-      --border: #ddd;
-      --accent: #4a7c00;
-      --accent2: #1a45b0;
-      --text: #111;
-      --muted: #555;
-      --subtle: #f0f0f0;
-    }
-  }
+[data-theme="light"] {
+  --bg:        #e8ebf5;
+  --card:      #ffffff;
+  --blue:      #5b8dee;
+  --blue-dk:   #3a6ad4;
+  --yellow:    #f2da4f;
+  --text:      #1a1f3a;
+  --sub:       #7880a8;
+  --border:    #dde2f0;
+  --tag-bg:    #eef1fc;
+  --tag-text:  #3a6ad4;
+  --muted-card:#f4f6fd;
+  --shadow:    0 2px 16px rgba(60,90,180,0.09);
+  --shadow-h:  0 6px 28px rgba(60,90,180,0.16);
+  --stat-text: #fff;
+  --stat-sub:  rgba(255,255,255,0.6);
+}
+[data-theme="dark"] {
+  --bg:        #13151f;
+  --card:      #1c1f30;
+  --blue:      #5b8dee;
+  --blue-dk:   #7aabff;
+  --yellow:    #d4b830;
+  --text:      #e4e8f8;
+  --sub:       #7880a8;
+  --border:    #272b40;
+  --tag-bg:    #1a2044;
+  --tag-text:  #7aabff;
+  --muted-card:#161928;
+  --shadow:    0 2px 16px rgba(0,0,0,0.35);
+  --shadow-h:  0 6px 28px rgba(0,0,0,0.50);
+  --stat-text: #fff;
+  --stat-sub:  rgba(255,255,255,0.55);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+  transition: background 0.4s, color 0.4s;
+}
+
+/* ── TOGGLE ── */
+.toggle-btn {
+  position: fixed; top: 20px; right: 20px; z-index: 200;
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 50px;
+  padding: 8px 18px 8px 14px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px; font-weight: 800;
+  color: var(--sub);
+  cursor: pointer;
+  display: flex; align-items: center; gap: 8px;
+  box-shadow: var(--shadow);
+  transition: all 0.25s;
+}
+.toggle-btn:hover { border-color: var(--blue); color: var(--blue); }
+
+/* ── PAGE ── */
+.page { max-width: 960px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ── HERO ── */
+.hero {
+  background: var(--blue);
+  border-radius: 28px;
+  padding: 44px 48px;
+  margin-bottom: 18px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 28px; align-items: center;
+  position: relative; overflow: hidden;
+  box-shadow: var(--shadow);
+}
+/* deco shapes */
+.hero-deco1 {
+  position: absolute; width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.07);
+  top: -70px; right: -50px;
+}
+.hero-deco2 {
+  position: absolute; width: 100px; height: 100px;
+  border-radius: 50%;
+  background: var(--yellow); opacity: 0.18;
+  bottom: -30px; left: 80px;
+}
+.hero-deco3 {
+  position: absolute; width: 50px; height: 50px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  bottom: 30px; right: 200px;
+}
+
+.hero-name {
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(34px, 5.5vw, 58px);
+  font-weight: 900; color: #fff;
+  line-height: 1.0; letter-spacing: -0.5px;
+  position: relative; z-index: 1;
+}
+.hero-name .accent { color: var(--yellow); }
+.hero-role {
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-top: 10px; position: relative; z-index: 1;
+}
+
+.contacts { display: flex; flex-direction: column; gap: 9px; position: relative; z-index: 1; }
+.contacts a, .contacts span {
+  display: flex; align-items: center; gap: 9px;
+  font-size: 12px; font-weight: 600;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none; transition: color 0.2s;
+}
+.contacts a:hover { color: var(--yellow); }
+.cdot {
+  width: 7px; height: 7px;
+  background: var(--yellow); border-radius: 50%; flex-shrink: 0;
+}
+
+/* ── GRID ── */
+.row { display: grid; gap: 18px; margin-bottom: 18px; }
+.row-2 { grid-template-columns: 1fr 1fr; }
+.row-1 { grid-template-columns: 1fr; }
+.row-3-2 { grid-template-columns: 1.15fr 1fr; }
+
+/* ── CARD ── */
+.card {
+  background: var(--card);
+  border-radius: 24px;
+  padding: 30px 30px 26px;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.3s, transform 0.3s;
+  position: relative; overflow: hidden;
+}
+.card:hover { box-shadow: var(--shadow-h); transform: translateY(-3px); }
+
+.clabel {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 10px; font-weight: 900;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 20px;
+}
+.clabel::before {
+  content: ''; display: block;
+  width: 22px; height: 3px;
+  background: var(--yellow); border-radius: 2px;
+}
+
+/* ── SUMMARY ── */
+.summary-text {
+  font-size: 13.5px; line-height: 1.8; color: var(--sub); font-weight: 400;
+}
+
+/* ── SKILLS ── */
+.skill-group { margin-bottom: 18px; }
+.skill-group:last-child { margin-bottom: 0; }
+.skill-cat {
+  font-family: 'Nunito', sans-serif;
+  font-size: 9px; font-weight: 900;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--sub); margin-bottom: 9px;
+}
+.tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.tag {
+  background: var(--tag-bg); color: var(--tag-text);
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px; font-weight: 700;
+  padding: 5px 14px; border-radius: 50px;
+  transition: all 0.2s; cursor: default;
+}
+.tag:hover { background: var(--blue); color: #fff; transform: scale(1.05); }
+
+/* ── JOB ── */
+.job {
+  padding-bottom: 22px; margin-bottom: 22px;
+  border-bottom: 1.5px dashed var(--border);
+}
+.job:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.job-top {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; gap: 10px; flex-wrap: wrap; margin-bottom: 3px;
+}
+.job-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800; font-size: 13.5px; color: var(--text);
+}
+.job-period {
+  font-size: 11px; font-weight: 700;
+  background: var(--tag-bg); color: var(--tag-text);
+  padding: 3px 12px; border-radius: 50px; white-space: nowrap; flex-shrink: 0;
+}
+.job-company {
+  font-size: 12px; font-weight: 700; color: var(--blue);
+  margin-bottom: 10px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+}
+.badge {
+  background: var(--yellow); color: #5a4000;
+  font-size: 9px; font-weight: 900;
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 2px 10px; border-radius: 50px;
+}
+[data-theme="dark"] .badge { color: #2a1a00; }
+
+.jbullets { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.jbullets li {
+  font-size: 12.5px; color: var(--sub);
+  padding-left: 18px; position: relative; line-height: 1.6;
+}
+.jbullets li::before {
+  content: ''; position: absolute; left: 2px; top: 8px;
+  width: 7px; height: 7px;
+  background: var(--yellow); border-radius: 50%;
+}
+[data-theme="dark"] .jbullets li::before { background: var(--blue); }
+
+/* ── PROJECT ── */
+.project {
+  background: var(--muted-card);
+  border-radius: 18px; padding: 16px 18px;
+  margin-bottom: 12px;
+  border: 1.5px solid var(--border);
+  transition: all 0.25s;
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.project:hover { border-color: var(--blue); background: var(--card); }
+.project:last-child { margin-bottom: 0; }
+
+.p-icon {
+  width: 44px; height: 44px; border-radius: 14px;
+  background: var(--blue);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.p-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800; font-size: 13px; color: var(--text); margin-bottom: 5px;
+  display: flex; align-items: center; gap: 7px; flex-wrap: wrap;
+}
+.p-desc { font-size: 12px; color: var(--sub); line-height: 1.6; }
+
+/* ── EDUCATION ── */
+.edu {
+  display: flex; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap;
+  margin-bottom: 18px; padding-bottom: 18px;
+  border-bottom: 1.5px dashed var(--border);
+}
+.edu:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.edu-degree {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800; font-size: 13.5px; color: var(--text); margin-bottom: 3px;
+}
+.edu-inst { font-size: 12px; font-weight: 700; color: var(--blue); }
+.edu-note { font-size: 11px; color: var(--sub); margin-top: 4px; }
+.edu-period {
+  font-size: 11px; font-weight: 700;
+  background: var(--tag-bg); color: var(--tag-text);
+  padding: 3px 12px; border-radius: 50px; white-space: nowrap; height: fit-content;
+}
+
+/* ── STAT CARDS ── */
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
+.stat {
+  border-radius: 18px; padding: 16px; text-align: center;
+}
+.stat-blue { background: var(--blue); }
+.stat-yellow { background: var(--yellow); }
+.stat-outline { background: var(--muted-card); border: 1.5px solid var(--border); grid-column: 1/-1; }
+
+.stat-num {
+  font-family: 'Nunito', sans-serif;
+  font-size: 26px; font-weight: 900; line-height: 1;
+}
+.stat-blue .stat-num, .stat-blue .stat-sub { color: #fff; }
+.stat-blue .stat-sub { color: rgba(255,255,255,0.65); }
+.stat-yellow .stat-num { color: #5a4000; }
+.stat-yellow .stat-sub { color: rgba(90,64,0,0.6); }
+.stat-outline .stat-num { color: var(--blue); font-size: 14px; }
+.stat-outline .stat-sub { color: var(--sub); }
+[data-theme="dark"] .stat-yellow .stat-num { color: #2a1500; }
+[data-theme="dark"] .stat-yellow .stat-sub { color: rgba(42,21,0,0.7); }
+
+.stat-sub {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; margin-top: 5px;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes pop {
+  from { opacity: 0; transform: scale(0.95) translateY(18px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.hero { animation: pop 0.5s cubic-bezier(.34,1.4,.64,1) both; }
+.card { animation: pop 0.5s cubic-bezier(.34,1.4,.64,1) both; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 660px) {
+  .hero { grid-template-columns: 1fr; padding: 28px 24px; }
+  .row-2, .row-3-2 { grid-template-columns: 1fr; }
+  .page { padding: 24px 14px 60px; }
+  .toggle-btn { top: 12px; right: 12px; padding: 6px 14px 6px 10px; }
+}
+@media print { .toggle-btn { display: none; } }
 </style>
 </head>
 <body>
-<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Alternar tema">
-  <span class="icon" id="themeIcon">☀️</span>
-  <span id="themeLabel">Claro</span>
+
+<button class="toggle-btn" onclick="toggleTheme()">
+  <span id="tIcon">🌙</span>
+  <span id="tLabel">Escuro</span>
 </button>
+
 <div class="page">
 
-  <!-- HEADER -->
-  <header>
-    <div class="name-block">
-      <h1><em>Aimeê</em> Miranda Ribeiro</h1>
-      <p class="subtitle">Ciência da Computação · IA &amp; Software Engineering</p>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-deco1"></div>
+    <div class="hero-deco2"></div>
+    <div class="hero-deco3"></div>
+    <div>
+      <div class="hero-name"><span class="accent">Aimeê</span><br>Miranda Ribeiro</div>
+      <div class="hero-role">Ciência da Computação · IA &amp; Software Engineering</div>
     </div>
-    <div class="contact-grid">
-      <div class="contact-item">Belém, PA — Brasil</div>
-      <div class="contact-item">+55 91 98410-1102</div>
-      <div class="contact-item"><a href="mailto:aimeemirandar@gmail.com">aimeemirandar@gmail.com</a></div>
-      <div class="contact-item"><a href="https://www.linkedin.com/in/aimeê-miranda-b228bb260/" target="_blank">linkedin.com/in/aimeemiranda</a></div>
-      <div class="contact-item"><a href="https://github.com/Eemiaa" target="_blank">github.com/Eemiaa</a></div>
+    <div class="contacts">
+      <span><span class="cdot"></span>Belém, PA — Brasil</span>
+      <span><span class="cdot"></span>+55 91 98410-1102</span>
+      <a href="mailto:aimeemirandar@gmail.com"><span class="cdot"></span>aimeemirandar@gmail.com</a>
+      <a href="https://linkedin.com/in/aimeê-miranda-b228bb260/" target="_blank"><span class="cdot"></span>linkedin.com/in/aimeemiranda</a>
+      <a href="https://github.com/Eemiaa" target="_blank"><span class="cdot"></span>github.com/Eemiaa</a>
     </div>
-  </header>
+  </div>
 
-  <div class="grid">
+  <!-- ROW 1: Resumo + Skills -->
+  <div class="row row-2">
 
-    <!-- RESUMO -->
-    <div class="section">
-      <div class="section-label"><span>Resumo</span></div>
-      <div class="section-body">
-        <p class="summary">
-          Estudante de Ciência da Computação com sólida base em Python e experiência prática no ecossistema de Inteligência Artificial. Atualmente pesquiso o comportamento de LLMs em colaboração internacional (UBC, Canadá), focando na identificação de vieses e extração de dados. Possuo experiência no desenvolvimento de APIs, automação de processos e integração de sistemas, buscando aplicar conhecimentos técnicos para acelerar o desenvolvimento de soluções baseadas em IA.
-        </p>
+    <div class="card" style="animation-delay:.05s">
+      <!-- deco blob -->
+      <div style="position:absolute;width:100px;height:100px;border-radius:50%;background:var(--yellow);opacity:0.1;top:-30px;right:-30px;pointer-events:none;"></div>
+      <div class="clabel">Resumo</div>
+      <p class="summary-text">
+        Estudante de Ciência da Computação com sólida base em Python e experiência prática no ecossistema de Inteligência Artificial. Pesquiso o comportamento de LLMs em colaboração internacional com a UBC (Canadá), focando na identificação de vieses e extração de dados. Experiência em desenvolvimento de APIs, automação de processos e integração de sistemas.
+      </p>
+    </div>
+
+    <div class="card" style="animation-delay:.1s">
+      <div class="clabel">Skills</div>
+      <div class="skill-group">
+        <div class="skill-cat">Linguagens &amp; Frameworks</div>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">FastAPI</span>
+          <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">JavaScript</span>
+          <span class="tag">Node.js</span><span class="tag">Vue.js</span><span class="tag">Quasar</span>
+          <span class="tag">React</span><span class="tag">C#</span><span class="tag">ASP.NET</span><span class="tag">SQL</span>
+        </div>
       </div>
-    </div>
-
-    <!-- COMPETÊNCIAS -->
-    <div class="section">
-      <div class="section-label"><span>Skills</span></div>
-      <div class="section-body">
-        <div class="skill-group">
-          <div class="skill-cat">Linguagens &amp; Frameworks</div>
-          <div class="skill-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Flask</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">Java</span>
-            <span class="tag">Spring Boot</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">Node.js</span>
-            <span class="tag">Vue.js</span>
-            <span class="tag">Quasar</span>
-            <span class="tag">React</span>
-            <span class="tag">C#</span>
-            <span class="tag">ASP.NET</span>
-            <span class="tag">SQL</span>
-          </div>
+      <div class="skill-group">
+        <div class="skill-cat">IA &amp; Dados</div>
+        <div class="tags">
+          <span class="tag">LangChain</span><span class="tag">LLMs</span><span class="tag">Prompt Eng.</span>
+          <span class="tag">AST Analysis</span><span class="tag">Pandas</span><span class="tag">Viés em IA</span>
         </div>
-        <div class="skill-group">
-          <div class="skill-cat">IA &amp; Dados</div>
-          <div class="skill-tags">
-            <span class="tag">LangChain</span>
-            <span class="tag">LLMs</span>
-            <span class="tag">Engenharia de Prompts</span>
-            <span class="tag">AST Analysis</span>
-            <span class="tag">Pandas</span>
-            <span class="tag">Dataset Manipulation</span>
-            <span class="tag">Auditoria de Vieses</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <div class="skill-cat">DevOps &amp; Infraestrutura</div>
-          <div class="skill-tags">
-            <span class="tag">Docker</span>
-            <span class="tag">Portainer</span>
-            <span class="tag">CI/CD</span>
-            <span class="tag">GitLab</span>
-            <span class="tag">Git</span>
-            <span class="tag">Monitoramento de Redes</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <div class="skill-cat">Outros</div>
-          <div class="skill-tags">
-            <span class="tag">APIs RESTful</span>
-            <span class="tag">gRPC</span>
-            <span class="tag">VSCode Extensions</span>
-            <span class="tag">Pesquisa Internacional</span>
-          </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-cat">DevOps &amp; Infra</div>
+        <div class="tags">
+          <span class="tag">Docker</span><span class="tag">CI/CD</span><span class="tag">GitLab</span>
+          <span class="tag">Git</span><span class="tag">Portainer</span><span class="tag">gRPC</span><span class="tag">APIs RESTful</span>
         </div>
       </div>
     </div>
 
-    <!-- EXPERIÊNCIA -->
-    <div class="section">
-      <div class="section-label"><span>Experiência</span></div>
-      <div class="section-body">
+  </div>
 
-        <div class="job">
-          <div class="job-header">
-            <span class="job-title">Assistente de Pesquisa — AI &amp; Software Engineering</span>
-            <span class="job-period">Fev 2026 – Presente</span>
-          </div>
-          <div class="job-company">University of British Columbia (UBC) · Kelowna, BC — Canadá <span class="badge">Internacional</span></div>
-          <ul class="job-bullets">
-            <li>Desenvolvimento de infraestrutura em Python para coleta e análise de dados sobre interações de desenvolvedores com LLMs.</li>
-            <li>Pesquisa de vieses em LLMs via pipelines de auditoria técnica, usando Python (AST/Pandas) e LangChain para extração de insights semânticos em código-fonte.</li>
-            <li>Co-autoria da ferramenta de telemetria <strong>CodeWatcher</strong> para análise de interações de codificação com IA — aprovada na <strong>ICSME 2025</strong>. <span class="badge">Publicação</span></li>
-          </ul>
+  <!-- ROW 2: Experiência (full) -->
+  <div class="row row-1">
+    <div class="card" style="animation-delay:.15s">
+      <div class="clabel">Experiência Profissional</div>
+
+      <div class="job">
+        <div class="job-top">
+          <span class="job-title">Assistente de Pesquisa — AI &amp; Software Engineering</span>
+          <span class="job-period">Fev 2026 – Presente</span>
         </div>
-
-        <div class="job">
-          <div class="job-header">
-            <span class="job-title">Técnico em Tecnologia da Informação</span>
-            <span class="job-period">Mar 2024 – Jan 2026</span>
-          </div>
-          <div class="job-company">CTIC-UFPA — Coordenação de Sistemas de Informação · Belém, PA</div>
-          <ul class="job-bullets">
-            <li>Desenvolvimento de APIs em Spring Boot e manutenção de sistemas legados em Java.</li>
-            <li>Criação de interfaces responsivas com Vue.js e Quasar Framework, focando em UX.</li>
-          </ul>
+        <div class="job-company">
+          University of British Columbia (UBC) · Kelowna, BC — Canadá
+          <span class="badge">Internacional</span>
+          <span class="badge">ICSME 2025</span>
         </div>
-
-        <div class="job">
-          <div class="job-header">
-            <span class="job-title">Técnico em Tecnologia da Informação</span>
-            <span class="job-period">Mar 2023 – Mar 2024</span>
-          </div>
-          <div class="job-company">CTIC-UFPA — Segurança e Serviços de Internet · Belém, PA</div>
-          <ul class="job-bullets">
-            <li>Gerenciamento de containers com Docker e Portainer.</li>
-            <li>Automação de deploys via GitLab CI/CD.</li>
-          </ul>
-        </div>
-
-        <div class="job">
-          <div class="job-header">
-            <span class="job-title">Estagiária de Desenvolvimento Backend</span>
-            <span class="job-period">Dez 2022 – Mar 2023</span>
-          </div>
-          <div class="job-company">W3 Automação e Sistemas · Belém, PA</div>
-          <ul class="job-bullets">
-            <li>Desenvolvimento de APIs RESTful de alta performance com gRPC e ASP.NET para o setor bancário.</li>
-          </ul>
-        </div>
-
+        <ul class="jbullets">
+          <li>Desenvolvimento de infraestrutura em Python para coleta e análise de dados sobre interações de desenvolvedores com LLMs.</li>
+          <li>Pesquisa de vieses em LLMs via pipelines de auditoria técnica, usando Python (AST/Pandas) e LangChain para extração de insights semânticos em código-fonte.</li>
+          <li>Co-autoria da ferramenta de telemetria <strong>CodeWatcher</strong> para análise de interações de codificação com IA — aprovada na conferência internacional ICSME 2025.</li>
+        </ul>
       </div>
+
+      <div class="job">
+        <div class="job-top">
+          <span class="job-title">Técnico em Tecnologia da Informação</span>
+          <span class="job-period">Mar 2024 – Jan 2026</span>
+        </div>
+        <div class="job-company">CTIC-UFPA — Coordenação de Sistemas de Informação · Belém, PA</div>
+        <ul class="jbullets">
+          <li>Desenvolvimento de APIs em Spring Boot e manutenção de sistemas legados em Java.</li>
+          <li>Criação de interfaces responsivas com Vue.js e Quasar Framework, focando em UX.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-top">
+          <span class="job-title">Técnico em Tecnologia da Informação</span>
+          <span class="job-period">Mar 2023 – Mar 2024</span>
+        </div>
+        <div class="job-company">CTIC-UFPA — Segurança e Serviços de Internet · Belém, PA</div>
+        <ul class="jbullets">
+          <li>Gerenciamento de containers com Docker e Portainer.</li>
+          <li>Automação de deploys via GitLab CI/CD.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-top">
+          <span class="job-title">Estagiária de Desenvolvimento Backend</span>
+          <span class="job-period">Dez 2022 – Mar 2023</span>
+        </div>
+        <div class="job-company">W3 Automação e Sistemas · Belém, PA</div>
+        <ul class="jbullets">
+          <li>Desenvolvimento de APIs RESTful de alta performance com gRPC e ASP.NET para o setor bancário.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ROW 3: Projetos + Formação -->
+  <div class="row row-3-2">
+
+    <div class="card" style="animation-delay:.2s">
+      <div class="clabel">Projetos em Destaque</div>
+
+      <div class="project">
+        <div class="p-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"/>
+            <circle cx="12" cy="12" r="5.5" stroke="#f2da4f" stroke-width="2"/>
+            <circle cx="12" cy="12" r="2" fill="white"/>
+          </svg>
+        </div>
+        <div>
+          <div class="p-title">CodeWatcher: IDE Telemetry for LLMs <span class="badge">UBC &amp; UFPA</span></div>
+          <p class="p-desc">Ferramenta para extração de dados de telemetria em IDEs, analisando como humanos utilizam IA para programar. Aprovada na conferência internacional ICSME 2025.</p>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="p-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="3" width="7" height="7" rx="2.5" fill="white" opacity="0.9"/>
+            <rect x="14" y="3" width="7" height="7" rx="2.5" fill="#f2da4f" opacity="0.9"/>
+            <rect x="3" y="14" width="7" height="7" rx="2.5" fill="#f2da4f" opacity="0.9"/>
+            <rect x="14" y="14" width="7" height="7" rx="2.5" fill="white" opacity="0.9"/>
+          </svg>
+        </div>
+        <div>
+          <div class="p-title">Avaliação de Modelos via TRI <span class="badge">UFPA</span></div>
+          <p class="p-desc">Backend em Python e FastAPI para avaliação estatística de modelos e datasets via Teoria de Resposta ao Item.</p>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="p-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <polygon points="12,2 14.9,8.5 22,9.3 17,14.1 18.5,21 12,17.5 5.5,21 7,14.1 2,9.3 9.1,8.5" stroke="white" stroke-width="1.8" stroke-linejoin="round" fill="none"/>
+            <circle cx="12" cy="12" r="2.2" fill="#f2da4f"/>
+          </svg>
+        </div>
+        <div>
+          <div class="p-title">Visão Computacional — Contagem de Alevinos <span class="badge">3º SICTI</span></div>
+          <p class="p-desc">Coleta e tratamento de dados para treinamento de modelos de IA. 3º lugar no XII SICTI.</p>
+        </div>
+      </div>
+
     </div>
 
-    <!-- PROJETOS -->
-    <div class="section">
-      <div class="section-label"><span>Projetos</span></div>
-      <div class="section-body">
+    <div class="card" style="animation-delay:.25s">
+      <!-- deco circles -->
+      <div style="position:absolute;width:90px;height:90px;border-radius:50%;background:var(--blue);opacity:0.07;bottom:-24px;right:-24px;pointer-events:none;"></div>
+      <div style="position:absolute;width:44px;height:44px;border-radius:50%;background:var(--yellow);opacity:0.14;bottom:40px;right:50px;pointer-events:none;"></div>
 
-        <div class="project">
-          <div class="project-title">CodeWatcher: IDE Telemetry for LLMs <span class="badge">UBC &amp; UFPA</span></div>
-          <p class="project-desc">Ferramenta para extração de dados de telemetria em IDEs, visando analisar como humanos utilizam IA para programar. Aprovada na conferência internacional ICSME 2025.</p>
+      <div class="clabel">Formação</div>
+
+      <div class="edu">
+        <div>
+          <div class="edu-degree">Bacharelado em Ciência da Computação</div>
+          <div class="edu-inst">Universidade Federal do Pará (UFPA) · Belém, PA</div>
+          <div class="edu-note">Machine Learning Crash Course · Hands-on com Python</div>
         </div>
-
-        <div class="project">
-          <div class="project-title">Ferramenta de Avaliação de Modelos via TRI <span class="badge">UFPA</span></div>
-          <p class="project-desc">Backend em Python e FastAPI para avaliação estatística de modelos e datasets utilizando Teoria de Resposta ao Item.</p>
-        </div>
-
-        <div class="project">
-          <div class="project-title">Visão Computacional — Contagem de Alevinos <span class="badge">IFPA · 3º Lugar SICTI</span></div>
-          <p class="project-desc">Apoio na coleta e tratamento de dados para treinamento de modelos de IA aplicados à contagem de alevinos, conquistando 3º lugar no XII SICTI.</p>
-        </div>
-
+        <span class="edu-period">2021 – Presente</span>
       </div>
+
+      <div class="edu">
+        <div>
+          <div class="edu-degree">Técnico em Informática</div>
+          <div class="edu-inst">Instituto Federal do Pará (IFPA) · Cametá, PA</div>
+        </div>
+        <span class="edu-period">2018 – 2020</span>
+      </div>
+
+      <div class="stats">
+        <div class="stat stat-blue">
+          <div class="stat-num">4+</div>
+          <div class="stat-sub">Anos de Exp.</div>
+        </div>
+        <div class="stat stat-yellow">
+          <div class="stat-num">3</div>
+          <div class="stat-sub">Projetos</div>
+        </div>
+        <div class="stat stat-outline">
+          <div class="stat-num">ICSME 2025</div>
+          <div class="stat-sub">Publicação Internacional</div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- FORMAÇÃO -->
-    <div class="section">
-      <div class="section-label"><span>Formação</span></div>
-      <div class="section-body">
-
-        <div class="edu">
-          <div class="edu-left">
-            <div class="edu-degree">Bacharelado em Ciência da Computação</div>
-            <div class="edu-institution">Universidade Federal do Pará (UFPA) · Belém, PA</div>
-            <div class="edu-note">Cursos relevantes: Machine Learning Crash Course (Hands-on com Python)</div>
-          </div>
-          <div class="edu-period">Out 2021 – Presente</div>
-        </div>
-
-        <div class="edu">
-          <div class="edu-left">
-            <div class="edu-degree">Técnico em Informática</div>
-            <div class="edu-institution">Instituto Federal do Pará (IFPA) · Cametá, PA</div>
-          </div>
-          <div class="edu-period">2018 – 2020</div>
-        </div>
-
-      </div>
-    </div>
-
-  </div><!-- /.grid -->
-</div><!-- /.page -->
+  </div>
+</div>
 
 <script>
-  const html = document.documentElement;
-  const icon = document.getElementById('themeIcon');
-  const label = document.getElementById('themeLabel');
+  const root  = document.documentElement;
+  const tIcon  = document.getElementById('tIcon');
+  const tLabel = document.getElementById('tLabel');
 
-  // Check saved preference
-  const saved = localStorage.getItem('theme');
-  if (saved === 'light') applyLight();
+  const saved = localStorage.getItem('cv-theme') || 'light';
+  apply(saved);
 
   function toggleTheme() {
-    if (html.classList.contains('light')) {
-      applyDark();
-    } else {
-      applyLight();
-    }
+    apply(root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
   }
 
-  function applyLight() {
-    html.classList.add('light');
-    icon.textContent = '🌙';
-    label.textContent = 'Escuro';
-    localStorage.setItem('theme', 'light');
-  }
-
-  function applyDark() {
-    html.classList.remove('light');
-    icon.textContent = '☀️';
-    label.textContent = 'Claro';
-    localStorage.setItem('theme', 'dark');
+  function apply(theme) {
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem('cv-theme', theme);
+    tIcon.textContent  = theme === 'dark' ? '☀️' : '🌙';
+    tLabel.textContent = theme === 'dark' ? 'Claro' : 'Escuro';
   }
 </script>
 </body>
