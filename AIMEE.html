@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aimeê Miranda Ribeiro — CV</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0c0f;
+    --surface: #13131a;
+    --border: #1e1e2e;
+    --accent: #c8f547;
+    --accent2: #5c8cff;
+    --text: #e8e8f0;
+    --muted: #6b6b85;
+    --subtle: #1a1a28;
+    --h1-color: #fff;
+    --summary-color: #c8c8de;
+    --job-title-color: #fff;
+    --toggle-bg: #1e1e2e;
+    --toggle-border: #2e2e44;
+    --toggle-icon: '☀️';
+    --transition-theme: background 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+  }
+
+  html.light {
+    --bg: #f5f3ee;
+    --surface: #eceae4;
+    --border: #d8d4c8;
+    --accent: #4a7c00;
+    --accent2: #1a45b0;
+    --text: #1a1a2e;
+    --muted: #7a7a90;
+    --subtle: #e8e4dc;
+    --h1-color: #0e0e1a;
+    --summary-color: #3a3a5c;
+    --job-title-color: #0e0e1a;
+    --toggle-bg: #e0dcd4;
+    --toggle-border: #c8c4b8;
+    --toggle-icon: '🌙';
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background 0.35s ease, color 0.35s ease;
+  }
+
+  /* Noise overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.5;
+  }
+
+  .page {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 60px 40px 80px;
+    position: relative;
+  }
+
+  /* ── HEADER ── */
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: end;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 56px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .name-block h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(38px, 6vw, 62px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -1px;
+    color: var(--h1-color);
+    margin-bottom: 8px;
+    transition: color 0.35s ease;
+  }
+
+  .name-block h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .subtitle {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .contact-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .contact-grid a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-grid a:hover { color: var(--accent); }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .contact-item::before {
+    content: '—';
+    color: var(--accent);
+    font-size: 10px;
+  }
+
+  /* ── GRID LAYOUT ── */
+  .grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0 48px;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    display: contents;
+  }
+
+  .section-label {
+    padding-top: 4px;
+    text-align: right;
+  }
+
+  .section-label span {
+    font-family: 'Syne', sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: inline-block;
+    position: sticky;
+    top: 20px;
+  }
+
+  .section-body {
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+
+  /* Remove border from last section-body */
+  .section:last-child .section-body {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  /* ── SUMMARY ── */
+  .summary {
+    font-size: 13.5px;
+    line-height: 1.8;
+    color: var(--summary-color);
+    font-family: 'DM Mono', monospace;
+    font-weight: 300;
+    transition: color 0.35s ease;
+  }
+
+  /* ── SKILLS ── */
+  .skill-group {
+    margin-bottom: 16px;
+  }
+
+  .skill-group:last-child { margin-bottom: 0; }
+
+  .skill-cat {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 8px;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    background: var(--subtle);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 2px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.3px;
+    transition: all 0.2s;
+  }
+
+  .tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(200, 245, 71, 0.05);
+  }
+
+  /* ── EXPERIENCE ── */
+  .job {
+    margin-bottom: 36px;
+    padding-left: 20px;
+    border-left: 2px solid var(--border);
+    position: relative;
+    transition: border-color 0.3s;
+  }
+
+  .job:hover { border-left-color: var(--accent); }
+
+  .job::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    transition: transform 0.3s;
+  }
+
+  .job:hover::before { transform: scale(1.4); }
+
+  .job:last-child { margin-bottom: 0; }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+  }
+
+  .job-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--job-title-color);
+    transition: color 0.35s ease;
+  }
+
+  .job-period {
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .job-company {
+    font-size: 12px;
+    color: var(--accent2);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .job-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .job-bullets li {
+    font-size: 12.5px;
+    color: #a8a8c0;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .job-bullets li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 14px;
+  }
+
+  /* ── PROJECTS ── */
+  .project {
+    background: var(--subtle);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--accent);
+    transform: scaleY(0);
+    transition: transform 0.3s;
+    transform-origin: top;
+  }
+
+  .project:hover { border-color: rgba(200, 245, 71, 0.25); }
+  .project:hover::before { transform: scaleY(1); }
+
+  .project:last-child { margin-bottom: 0; }
+
+  .project-desc {
+    font-size: 12px;
+    color: #8888a8;
+    line-height: 1.7;
+  }
+
+  /* ── EDUCATION ── */
+  .edu {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .edu:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .edu-left {}
+
+  .edu-institution {
+    font-size: 12px;
+    color: var(--accent2);
+  }
+
+  .edu-note {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .edu-period {
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ── THEME TOGGLE ── */
+  .theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    z-index: 999;
+    background: var(--toggle-bg);
+    border: 1px solid var(--toggle-border);
+    border-radius: 24px;
+    padding: 6px 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: all 0.3s ease;
+    user-select: none;
+    backdrop-filter: blur(8px);
+  }
+
+  .theme-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .theme-toggle .icon {
+    font-size: 13px;
+    line-height: 1;
+    transition: transform 0.4s ease;
+  }
+
+  .theme-toggle:hover .icon {
+    transform: rotate(20deg);
+  }
+
+  /* ── EDU DEGREE color fix ── */
+  .edu-degree {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--job-title-color);
+    margin-bottom: 3px;
+    transition: color 0.35s ease;
+  }
+
+  /* ── PROJECT TITLE color fix ── */
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--job-title-color);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+    transition: color 0.35s ease;
+  }
+
+  @media (max-width: 640px) {
+    .theme-toggle { top: 12px; right: 12px; padding: 5px 10px; }
+  }
+
+  @media print {
+    .theme-toggle { display: none; }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-body {
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .section:nth-child(1) .section-body { animation-delay: 0.1s; }
+  .section:nth-child(2) .section-body { animation-delay: 0.2s; }
+  .section:nth-child(3) .section-body { animation-delay: 0.3s; }
+  .section:nth-child(4) .section-body { animation-delay: 0.4s; }
+  .section:nth-child(5) .section-body { animation-delay: 0.5s; }
+  .section:nth-child(6) .section-body { animation-delay: 0.6s; }
+
+  /* Badge de destaque */
+  .badge {
+    display: inline-block;
+    background: rgba(200, 245, 71, 0.12);
+    border: 1px solid rgba(200, 245, 71, 0.3);
+    color: var(--accent);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .page { padding: 32px 20px 60px; }
+    header { grid-template-columns: 1fr; gap: 24px; }
+    .contact-grid { align-items: flex-start; }
+    .contact-item::before { display: none; }
+    .grid { grid-template-columns: 1fr; }
+    .section-label { text-align: left; padding-bottom: 12px; }
+    .section-label span { position: static; }
+    .section-body { border-bottom: 1px solid var(--border); margin-bottom: 32px; padding-bottom: 32px; }
+  }
+
+  @media print {
+    body { background: white; color: #111; }
+    body::before { display: none; }
+    :root {
+      --bg: white;
+      --surface: #f5f5f5;
+      --border: #ddd;
+      --accent: #4a7c00;
+      --accent2: #1a45b0;
+      --text: #111;
+      --muted: #555;
+      --subtle: #f0f0f0;
+    }
+  }
+</style>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Alternar tema">
+  <span class="icon" id="themeIcon">☀️</span>
+  <span id="themeLabel">Claro</span>
+</button>
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <div class="name-block">
+      <h1><em>Aimeê</em> Miranda Ribeiro</h1>
+      <p class="subtitle">Ciência da Computação · IA &amp; Software Engineering</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-item">Belém, PA — Brasil</div>
+      <div class="contact-item">+55 91 98410-1102</div>
+      <div class="contact-item"><a href="mailto:aimeemirandar@gmail.com">aimeemirandar@gmail.com</a></div>
+      <div class="contact-item"><a href="https://www.linkedin.com/in/aimeê-miranda-b228bb260/" target="_blank">linkedin.com/in/aimeemiranda</a></div>
+      <div class="contact-item"><a href="https://github.com/Eemiaa" target="_blank">github.com/Eemiaa</a></div>
+    </div>
+  </header>
+
+  <div class="grid">
+
+    <!-- RESUMO -->
+    <div class="section">
+      <div class="section-label"><span>Resumo</span></div>
+      <div class="section-body">
+        <p class="summary">
+          Estudante de Ciência da Computação com sólida base em Python e experiência prática no ecossistema de Inteligência Artificial. Atualmente pesquiso o comportamento de LLMs em colaboração internacional (UBC, Canadá), focando na identificação de vieses e extração de dados. Possuo experiência no desenvolvimento de APIs, automação de processos e integração de sistemas, buscando aplicar conhecimentos técnicos para acelerar o desenvolvimento de soluções baseadas em IA.
+        </p>
+      </div>
+    </div>
+
+    <!-- COMPETÊNCIAS -->
+    <div class="section">
+      <div class="section-label"><span>Skills</span></div>
+      <div class="section-body">
+        <div class="skill-group">
+          <div class="skill-cat">Linguagens &amp; Frameworks</div>
+          <div class="skill-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Flask</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">Java</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Vue.js</span>
+            <span class="tag">Quasar</span>
+            <span class="tag">React</span>
+            <span class="tag">C#</span>
+            <span class="tag">ASP.NET</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-cat">IA &amp; Dados</div>
+          <div class="skill-tags">
+            <span class="tag">LangChain</span>
+            <span class="tag">LLMs</span>
+            <span class="tag">Engenharia de Prompts</span>
+            <span class="tag">AST Analysis</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">Dataset Manipulation</span>
+            <span class="tag">Auditoria de Vieses</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-cat">DevOps &amp; Infraestrutura</div>
+          <div class="skill-tags">
+            <span class="tag">Docker</span>
+            <span class="tag">Portainer</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag">GitLab</span>
+            <span class="tag">Git</span>
+            <span class="tag">Monitoramento de Redes</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-cat">Outros</div>
+          <div class="skill-tags">
+            <span class="tag">APIs RESTful</span>
+            <span class="tag">gRPC</span>
+            <span class="tag">VSCode Extensions</span>
+            <span class="tag">Pesquisa Internacional</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERIÊNCIA -->
+    <div class="section">
+      <div class="section-label"><span>Experiência</span></div>
+      <div class="section-body">
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Assistente de Pesquisa — AI &amp; Software Engineering</span>
+            <span class="job-period">Fev 2026 – Presente</span>
+          </div>
+          <div class="job-company">University of British Columbia (UBC) · Kelowna, BC — Canadá <span class="badge">Internacional</span></div>
+          <ul class="job-bullets">
+            <li>Desenvolvimento de infraestrutura em Python para coleta e análise de dados sobre interações de desenvolvedores com LLMs.</li>
+            <li>Pesquisa de vieses em LLMs via pipelines de auditoria técnica, usando Python (AST/Pandas) e LangChain para extração de insights semânticos em código-fonte.</li>
+            <li>Co-autoria da ferramenta de telemetria <strong>CodeWatcher</strong> para análise de interações de codificação com IA — aprovada na <strong>ICSME 2025</strong>. <span class="badge">Publicação</span></li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Técnico em Tecnologia da Informação</span>
+            <span class="job-period">Mar 2024 – Jan 2026</span>
+          </div>
+          <div class="job-company">CTIC-UFPA — Coordenação de Sistemas de Informação · Belém, PA</div>
+          <ul class="job-bullets">
+            <li>Desenvolvimento de APIs em Spring Boot e manutenção de sistemas legados em Java.</li>
+            <li>Criação de interfaces responsivas com Vue.js e Quasar Framework, focando em UX.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Técnico em Tecnologia da Informação</span>
+            <span class="job-period">Mar 2023 – Mar 2024</span>
+          </div>
+          <div class="job-company">CTIC-UFPA — Segurança e Serviços de Internet · Belém, PA</div>
+          <ul class="job-bullets">
+            <li>Gerenciamento de containers com Docker e Portainer.</li>
+            <li>Automação de deploys via GitLab CI/CD.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Estagiária de Desenvolvimento Backend</span>
+            <span class="job-period">Dez 2022 – Mar 2023</span>
+          </div>
+          <div class="job-company">W3 Automação e Sistemas · Belém, PA</div>
+          <ul class="job-bullets">
+            <li>Desenvolvimento de APIs RESTful de alta performance com gRPC e ASP.NET para o setor bancário.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PROJETOS -->
+    <div class="section">
+      <div class="section-label"><span>Projetos</span></div>
+      <div class="section-body">
+
+        <div class="project">
+          <div class="project-title">CodeWatcher: IDE Telemetry for LLMs <span class="badge">UBC &amp; UFPA</span></div>
+          <p class="project-desc">Ferramenta para extração de dados de telemetria em IDEs, visando analisar como humanos utilizam IA para programar. Aprovada na conferência internacional ICSME 2025.</p>
+        </div>
+
+        <div class="project">
+          <div class="project-title">Ferramenta de Avaliação de Modelos via TRI <span class="badge">UFPA</span></div>
+          <p class="project-desc">Backend em Python e FastAPI para avaliação estatística de modelos e datasets utilizando Teoria de Resposta ao Item.</p>
+        </div>
+
+        <div class="project">
+          <div class="project-title">Visão Computacional — Contagem de Alevinos <span class="badge">IFPA · 3º Lugar SICTI</span></div>
+          <p class="project-desc">Apoio na coleta e tratamento de dados para treinamento de modelos de IA aplicados à contagem de alevinos, conquistando 3º lugar no XII SICTI.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FORMAÇÃO -->
+    <div class="section">
+      <div class="section-label"><span>Formação</span></div>
+      <div class="section-body">
+
+        <div class="edu">
+          <div class="edu-left">
+            <div class="edu-degree">Bacharelado em Ciência da Computação</div>
+            <div class="edu-institution">Universidade Federal do Pará (UFPA) · Belém, PA</div>
+            <div class="edu-note">Cursos relevantes: Machine Learning Crash Course (Hands-on com Python)</div>
+          </div>
+          <div class="edu-period">Out 2021 – Presente</div>
+        </div>
+
+        <div class="edu">
+          <div class="edu-left">
+            <div class="edu-degree">Técnico em Informática</div>
+            <div class="edu-institution">Instituto Federal do Pará (IFPA) · Cametá, PA</div>
+          </div>
+          <div class="edu-period">2018 – 2020</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /.grid -->
+</div><!-- /.page -->
+
+<script>
+  const html = document.documentElement;
+  const icon = document.getElementById('themeIcon');
+  const label = document.getElementById('themeLabel');
+
+  // Check saved preference
+  const saved = localStorage.getItem('theme');
+  if (saved === 'light') applyLight();
+
+  function toggleTheme() {
+    if (html.classList.contains('light')) {
+      applyDark();
+    } else {
+      applyLight();
+    }
+  }
+
+  function applyLight() {
+    html.classList.add('light');
+    icon.textContent = '🌙';
+    label.textContent = 'Escuro';
+    localStorage.setItem('theme', 'light');
+  }
+
+  function applyDark() {
+    html.classList.remove('light');
+    icon.textContent = '☀️';
+    label.textContent = 'Claro';
+    localStorage.setItem('theme', 'dark');
+  }
+</script>
+</body>
+</html>
